@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "vehicles-management"
+version = "0.1.0"
+description = "REST API for vehicle management with role-based access control"
+authors = ["SamuelAMT"]
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "0.115.6"
+uvicorn = { version = "0.32.1", extras = ["standard"] }
+sqlalchemy = { version = "2.0.36", extras = ["asyncio"] }
+asyncpg = "0.30.0"
+alembic = "1.14.0"
+pydantic = "2.10.3"
+pydantic-settings = "2.7.0"
+python-jose = { version = "3.3.0", extras = ["cryptography"] }
+bcrypt = "5.0.0"
+httpx = "0.28.1"
+redis = "5.2.1"
+python-multipart = "0.0.20"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.3.4"
+pytest-asyncio = "0.24.0"
+pytest-cov = "6.0.0"
+anyio = "4.7.0"
+ruff = "^0.8.0"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
